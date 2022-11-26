@@ -6,13 +6,7 @@ const cookie = document.getElementById('cookie');
 let timeLast = 0;
 
 cookie.onclick = function() {
-  +clickerCounter.textContent++;
-
-  if (+clickerCounter.textContent % 2 === 1) {
-    cookie.width = 220;
-  } else {
-    cookie.width = 200;
-  }
+  cookie.width = ++clickerCounter.textContent % 2 ? 220 : 200;
   
   let speedAverage = 1 / ((new Date().getTime() / 1000) - timeLast);
   clickSpeed.textContent = speedAverage.toFixed(2);
