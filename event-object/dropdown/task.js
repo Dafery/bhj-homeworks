@@ -1,13 +1,24 @@
 'use strict';
 
-const dropdownValues = [...document.querySelectorAll('.dropdown__value')];
-const dropdownList = document.querySelector('.dropdown__list');
+const dropdowns = [...document.querySelectorAll('.dropdown')];
 
-function switchingList(e) {
-  e.preventDefault();
-  dropdownValues.forEach((el) => (el.textContent = e.target.textContent));
-  dropdownList.classList.toggle('dropdown__list_active');
+function switchingList(dropdownList, dropdownValue) {
+  return (e) => {
+    e.preventDefault();
+
+    const dropdownListActive = document.querySelector('.dropdown__list_active');
+
+    if (dropdownValue) dropdownValue.textContent = e.target.textContent;
+
+    dropdownList.classList.add('dropdown__list_active');
+    dropdownListActive?.classList.remove('dropdown__list_active');
+  };
 }
 
-dropdownValues.forEach((el) => el.addEventListener('click', switchingList));
-dropdownList.addEventListener('click', switchingList);
+dropdowns.forEach((el) => {
+  const dropdownValue = el.querySelector('.dropdown__value');
+  const dropdownList = el.querySelector('.dropdown__list');
+
+  dropdownValue.addEventListener('click', switchingList(dropdownList));
+  dropdownList.addEventListener('click', switchingList(dropdownList, dropdownValue));
+});
