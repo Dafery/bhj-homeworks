@@ -4,6 +4,8 @@ const tabsWrappers = [...document.querySelectorAll('.tabs')];
 
 function switchingTabs(idx, tabs, tabsContent) {
   return () => {
+    if (tabs[idx].classList.contains('tab_active')) return;
+
     let activeIdx = tabs.findIndex((el) => el.classList.contains('tab_active'));
 
     tabs[activeIdx].classList.remove('tab_active');
