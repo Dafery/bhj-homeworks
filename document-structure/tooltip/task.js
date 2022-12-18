@@ -1,6 +1,6 @@
 'use strict';
 
-const body = document.querySelector('body');
+const hasTooltips = document.querySelectorAll('.has-tooltip');
 
 function addTooltip(e) {
   e.preventDefault();
@@ -45,4 +45,4 @@ function addTooltip(e) {
   }
 }
 
-body.addEventListener('click', addTooltip);
+hasTooltips.forEach((el) => el.addEventListener('click', addTooltip));
