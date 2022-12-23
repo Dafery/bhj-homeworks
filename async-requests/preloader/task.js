@@ -11,6 +11,8 @@ xhr.send();
 xhr.addEventListener('load', () => {  
   loader.classList.remove('loader_active');
 
+  if (xhr.status !== 200) return alert(`${xhr.status} ${xhr.statusText}`);
+
   const responseCurrencies = xhr.response.response.Valute;
   for (const currency in responseCurrencies) {
     items.insertAdjacentHTML(
