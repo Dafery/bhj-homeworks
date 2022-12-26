@@ -3,7 +3,9 @@
 const modal = document.querySelector('.modal');
 const modalClose = document.querySelector('.modal__close');
 
-if (!document.cookie.includes('modal_close=true')) modal.classList.add('modal_active');
+if (!document.cookie.includes('modal_close=true')) {
+  modal.classList.add('modal_active');
+}
 
 modalClose.addEventListener('click', () => {
   modal.classList.remove('modal_active');
